@@ -4,27 +4,8 @@ date_default_timezone_set("Europe/London");
 $resultArray = array();
 $errors = array();
 
-//removed the password after created login scripts
-//$passwordBackend = "tukutukuas";
-
 //for security purpose.
 require_once("postCheck.php");
-/*
-if(!empty($_POST['sqlQueryValue'])){
-	$sqlQueryValue = $_POST['sqlQueryValue'];
-	//$productCodes = $_POST['productCodes'];	
-
-}else{
-	$errors[] = 'Nothing has been submitted!';
-	$resultArray += array("errors"=>$errors);
-	Die ($jsonFile = json_encode($resultArray));
-}*/
-
-//first get the values from front end;
-
-//chech if password matches
-
-//check if arrays have been submited;
 
 //let's count how many of the preferable arrays have not been submitted.
 //I do that in order to avoid 6 differenet errors being reported at the same time at front end, in case a file with different column
@@ -79,15 +60,8 @@ require('../../shortageReport_connectDB.php');
 //Delete values from the current table 
 //this needs to be done to avoid duplicate data
 
-
 $queryDelete = "DELETE FROM deliveries WHERE 1 = 1";
 $resultDelete = mysqli_query($shortageReportDB, $queryDelete);
-
-
-//Insert data into ti database by using for loop.
-//$textValue = $dateArray[0];
-
-
 
 for ($i = 0; $i <$arrayLength; $i++){
 	
@@ -114,10 +88,10 @@ for ($i = 0; $i <$arrayLength; $i++){
 	
 	$resultInsertdata = mysqli_query($shortageReportDB, $queryInsertData);
 }
-//insert current time into database
 //Delete old value for lastUpdate.
 $queryDelete = "DELETE FROM lastUpdate WHERE 1 = 1";
 $resultDelete = mysqli_query($shortageReportDB, $queryDelete);
+//insert current time into database
 //the reason i dont use mysql now, because I need the current time value in this file to send it back to front end.
 $now = date_create()->format('Y-m-d H:i:s');
 $queryInsertData2 = "INSERT INTO lastUpdate (last_update)VALUES ('$now')";

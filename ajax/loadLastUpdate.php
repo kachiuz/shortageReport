@@ -28,7 +28,6 @@ if ($num > 0){
 	$lastUpdate = "No Data!";
 	
 }
-
 require_once("timeSinceLastUpdate.php");
 mysqli_close($shortageReportDB);
 $resultArray += array("lastUpdate"=>$lastUpdate);

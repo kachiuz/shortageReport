@@ -6,6 +6,4 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' ){
 	Die ($jsonFile = json_encode($loadIndexesArray));
 }
 
-
-
 ?>

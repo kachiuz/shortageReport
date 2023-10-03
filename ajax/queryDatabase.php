@@ -28,8 +28,6 @@ require('../../shortageReport_connectDB.php');
 
 //variables to store results for table to be generated
 
-//$productCodesArray = array();    //have this value ar front end already
-//$productQuantitiesArray = array();   //have this value at fron end already
 $expectedDatesArray = array();
 $expectedQuantitiesArray = array();
 $resourceDescriptionArray = array();
@@ -39,8 +37,6 @@ $coverOrNotArray = array();
 //will need todays date to calculate the differnece between delivery date and today
 $today = date("Y-m-d");
 $today = date_create($today);
-
-
 
 //query database for each product
 for ($i = 0; $i< count($productCodes); $i++ ) {
@@ -118,7 +114,6 @@ for ($i = 0; $i< count($productCodes); $i++ ) {
 							}
 
 						}
-						
 
 					} else if ($difference == 0) {
 						$expectedDate = "Today";
@@ -130,16 +125,13 @@ for ($i = 0; $i< count($productCodes); $i++ ) {
 					//nothing
 				}
 			
-				
 			} else {
 				$resourceDescription = "No description available";
 				//if no date is found means there is no delivery scheduled
 				$expectedQuantity=0;
 				$expectedDate = "No delivery scheduled";
 			}
-			
 		} 
-
 	}else{
 		//if no date is found means there is no delivery scheduled
 		$resourceDescription = "No description available";
@@ -184,7 +176,6 @@ require_once("timeSinceLastUpdate.php");
 
 mysqli_close($shortageReportDB);
 			
-
 $resultArray += array("expectedDatesArray"=>$expectedDatesArray, "coverOrNotArray"=>$coverOrNotArray, "lastUpdate"=>$lastUpdate);
 $resultArray += array("expectedQuantitiesArray"=>$expectedQuantitiesArray, "resourceDescriptionArray"=>$resourceDescriptionArray, "errors"=>$errors,);
 

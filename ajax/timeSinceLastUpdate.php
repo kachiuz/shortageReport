@@ -1,12 +1,6 @@
 <?php
 
-
-//$datetime1 = new DateTime('2009-10-11 12:12:00');
 $currentTime = date_create()->format('Y-m-d H:i:s');
-//$currentTime = new DateTime('2009-10-13 10:12:00');
-//$interval = $lastUpdate->diff($currentTime);
-//$interval->format('%H');
-
 
 $start_datetime = new DateTime($currentTime); 
 $diff = $start_datetime->diff(new DateTime($lastUpdate)); 
