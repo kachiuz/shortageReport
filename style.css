@@ -1,0 +1,302 @@
+body {background-color: #f2f2f2;}
+header {text-align: center;}
+form {
+	text-align: center;
+	margin: 0px;
+}
+
+textarea {
+  resize: none;
+  padding: 0;
+  margin: 0;
+}
+h1, h2, .center {
+	text-align: center;
+}
+.text-align-left
+{
+	text-align: left;
+}
+
+pre {
+	text-align: left;
+	border: 1px solid grey;
+	width: 300px;
+	background-color: white;
+	font-size: 16px;
+	margin: auto;
+}
+.errorBorder {
+	border: 2px solid red;
+}
+.picBorder {
+	border: 1px solid grey;
+}
+.textIndent {
+	text-indent: 25px;
+}
+.buttonsContainer {
+	position: relative;
+	height: 55px;
+}
+
+.block {
+	display: block;
+}
+.relative {
+	position: relative;
+}
+/*BUTTONS*/
+button {
+	cursor: pointer;
+}
+#generateButton {
+	padding: 10px;
+	font-size: 20px;
+	position: absolute;
+	right: 0px;
+	top: 2px;
+	/*margin-right: 10%;*/
+}
+
+.clearButton {
+	background-color: #ffd1b3;
+}
+.greenButton {
+	background-color: #ccffb3;
+}
+
+.positionLeft{
+	position: absolute;
+	left: 11%;
+	top: 40%;
+	font-size: 20px;
+	padding: 10px;
+	font-weight: 600;
+}
+
+#clearInputButton{
+	padding: 10px;
+	font-size: 20px;
+	position: absolute;
+	left: 0px;
+	top: 2px;
+}
+
+.positionRight{
+	position: absolute;
+	right: 0px;
+	top: 2px;
+}
+.positionRight2{
+	position: absolute;
+	right: 11.5%;
+}
+
+#password, #upload, #password1, #username, #updateButton, #copyTableButton, #clearTableButton, #loginButton, #signOut, #clearDeliveriesButton{
+	padding: 10px;
+	font-size: 20px;
+}
+
+#response {
+	padding: 10px;
+	font-size: 20px;
+	color: green;
+	font-weight: 600;
+	display: inline-block;
+	width: 200px;
+}
+#lastUpdate {
+	width: 200px;
+	text-align: left;
+}
+#password1, #username{
+	width: 80%;
+}
+#loginButton{
+	margin-top: 5px;
+	width: 88%;
+	margin-bottom: 5px;
+}
+#signOut {
+	position: absolute;
+	top: 5%;
+	right: 1%;
+}
+
+/*buttons animation*/
+button:focus {
+    opacity: 0.6;
+}
+/* GRID LAYOUT*/
+.grid-container {
+  display: grid;
+ grid-auto-columns: 1fr;
+   grid-auto-flow: column;
+  background-color: grey;
+  padding: 2px;
+}
+.grid-item{
+  background-color: #f2f2f2;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+.grid-item-header{
+	grid-column: 1 / 13;
+	border-bottom: 2px solid grey;
+	background-color: #e6ffe6;
+}
+.grid-item-shoratgeInput{
+	grid-column: 1 / 4;
+	border-right: 1px solid grey;
+}
+.grid-item-generateTable {
+	grid-column: 4 / 13;	
+}
+
+/*deliveries update grid*/
+.grid-item-updateDeliveriesTitle{
+	grid-column: 1 / 13;
+	border-top: 2px solid grey;
+	border-bottom: 1px solid grey;
+	background-color: #e6ffe6;
+}
+.grid-item-updateDeliveriesPassword{
+	grid-column: 1 / 13;
+	align-self: center;
+	height: 40px;
+}
+.grid-item-updateDeliveriesInput{
+	grid-column: 1 / 13;
+}
+.grid-item-howToGenerateTitle{
+	grid-column: 1 / 13;
+	border-top: 2px solid grey;
+	border-bottom: 1px solid grey;
+	background-color: #e6ffe6;
+}
+/*two sections for how to generate shortage report*/
+.grid-item-howToStep1{
+	
+	grid-column: 1 / 6;
+}
+.grid-item-howToStep2{
+	grid-column: 6 / 9;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+}
+.grid-item-howToStep3{
+	grid-column: 9 / 13;
+}
+.grid-item-howToUpdateDeliveriesTitle{
+	grid-column: 1 / 13;
+	border-top: 2px solid grey;
+	border-bottom: 1px solid grey;
+	background-color: #e6ffe6;
+}
+.grid-item-deliveriesStep1{
+	grid-column: 1 / 4;
+}
+.grid-item-deliveriesStep2{
+	grid-column: 4 / 7;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+}
+.grid-item-deliveriesStep3{
+	grid-column: 7 / 13;
+}
+.grid-item-footer {
+	grid-column: 1/13;
+	border-top: 2px solid grey;
+}
+
+
+/*TABLE STYLING*/
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: white;
+}
+caption{
+	background-color: white;
+}
+
+table, tfoot {
+	width: 100%;
+}
+table {
+	table-layout: fixed;
+}
+
+caption {
+	font-size: 30px;
+	font-weight: 600;
+	border: 1px solid black;
+	border-bottom: 0px;
+}
+th {
+	background-color: #d9d9d9;
+	padding: 5px;
+	font-size: 18px;
+}
+tfoot {
+	text-align: right;
+	padding: 5px;
+}
+td {
+	padding: 5px;
+	font-size: 18px;
+	
+}
+
+
+.smallText {
+	font-size: 14px;
+}
+.redText {
+	color: red;
+	font-weight: 600;
+}
+
+.greenText {
+	color: green;
+	font-weight: 600;
+}
+.widthResult {
+	overflow: scroll ;
+	/*height: calc(100% - 50px); /*minus button container height*//*this approach doesnt work with overflow scroll, so the height mus be set it px*/
+	height: 517px;
+	border-bottom: 1px solid grey;
+}
+
+
+/*styles to add login*/
+.noDisplay {
+	display: none;
+}
+.grid-item-login{
+	grid-column: 1 / 13;
+	height: 790px;
+}
+.marginAuto{
+	width: 350px;
+	margin: auto;
+	border: 1px solid grey;
+}
+#rememberMe{
+	padding: 25px;
+	font-size: 30px;
+	transform: scale(1.5);
+}
+
+/*table widths*/
+.width15 {
+	width: 15%;
+}
+.width10 {
+	width: 10%;
+}
+.width30 {
+	width: 30%;
+}

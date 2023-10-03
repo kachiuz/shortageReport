@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SHORTAGE REPORT</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="stylesheet" href="style2.css">
+	<script src="javaScript.js"></script>
+</head>
+<body>
+
+	<main class="grid-container">
+		<header class="grid-item grid-item-header relative">
+			<h1>Generate a shortage report</h1>
+			<button type="button" id="signOut" class="noDisplay greenButton">Sign Out</button>
+		</header>
+
+		<!--login part, only shown if not login detected-->
+		<section class="noDisplay grid-item grid-item-login center" id="grid0">
+			<form class="marginAuto">
+				<dl class="text-align-left">
+					<dd><h2>Login</h2></dd>
+					<dd><label for="username"><b>Username</b></label></dd>
+					<dd><input type="text" placeholder="Enter Username" name="username" id="username" required></dd>
+
+					<dd><label for="psw1" class="text-align-left"><b>Password</b></label></dd>
+					<dd><input type="password" placeholder="Enter Password" name="psw1" id="password1" autocomplete="current-password" required></dd>
+						
+					<dd><button type="button" id="loginButton" class="greenButton">Login</button></dd>
+					<dd><label class="text-align-left">
+					  <input type="checkbox" checked="checked" name="remember" id="rememberMe"> Remember me
+					</label></dd>
+				</dl>
+			</form>
+		</section>
+
+		<section class="noDisplay grid-item grid-item-shoratgeInput" id="grid1">
+			<form style="width:80%; margin: auto;">
+				<!--<label for="textForm">Paste the text from shortage sheet below.</label>-->
+				<textarea rows="34" cols="47" id="textForm" name="textForm" placeholder="Copy and paste text from shortage sheet into this field."></textarea>
+				<div class="buttonsContainer">
+					
+					<button id="clearInputButton" type="button" class="clearButton" title="Clear text passed from G1 Order processer">Clear Form</button>
+					<button id="generateButton" type="button" class="greenButton" title="Generate shortage report">Generate</button>
+				</div>
+			</form>
+		</section>
+
+		<section class="noDisplay grid-item grid-item-generateTable" id="grid2">
+			<section class="widthResult"><!--container for table-->
+				<table id="reportTable">
+					<caption>Shortage Report</caption>
+					<thead>
+						<tr>
+							<th class="width15">Product code</th>
+							<th class="width30">Product name</th>
+							<th class="width15">Shortage</th>
+							<th class="width15">Next delivery</th>
+							<th class="width15">Expected quantity</th>
+							<th class="width10">Enough to cover</th>
+						</tr>
+					</thead>
+					<tbody id="shortageTable">
+						<tr>
+							<td>&nbsp;<td><td><td><td><td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th colspan="6" class="smallText">This report does not take into account stock that is ONHOLD or on GIPOSR.
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			<section class="buttonsContainer">
+				<span class="positionRight">
+					<button id="clearTableButton" type="button" class="clearButton" title="This button clears the shortage report table">Clear Table</button>
+					<button id="copyTableButton" type="button" class="greenButton" title="Clicking his button will copy the shortage table. Then just past it into an email.">Copy Table</button>
+				</span>
+			</section>
+		</section>
+		
+		<section class="noDisplay grid-item grid-item-updateDeliveriesTitle" id="grid3">
+			<h1>Update deliveries</h1>
+		</section>
+		<section class="noDisplay grid-item grid-item-updateDeliveriesPassword relative" id="grid4">
+				<div class="positionLeft">
+					<span>Last update:</span>
+					<span id="lastUpdate" class="greenText">...loading...</span>
+				</div>
+				<form enctype="multipart/form-data" class="topBottom5px">
+				<!--spans because i need inline element-->
+					<!--<label for="password">Password</label>
+					<input type="password" id="password" name="password" size="25" placeholder="Password">-->
+					<span id="response"></span>
+					<span class="positionRight2">
+						<button id="clearDeliveriesButton" type="button" class="clearButton" title="Empty the deliveries field">Clear Form</button>
+						<button id="updateButton" type="button" class="greenButton" title="Update deliveries">Update</button>
+					</span>
+				</form>
+		</section>
+		<section class="noDisplay grid-item grid-item-updateDeliveriesInput" id="grid5">
+			<form>
+					
+				<textarea class="form-control" rows=20 cols=195 id="xlx_json" placeholder="Copy and paste deliveries from Protean"></textarea>
+					
+			</form>
+		</section>  
+		
+		<section class="noDisplay grid-item grid-item-howToGenerateTitle" id="grid6">
+			<h2>How to generate a shortage report</h2>
+		</section>
+		<section class="noDisplay grid-item grid-item-howToStep1" id="grid7">
+			
+				<p class="textIndent text-align-left">To generate a shortage report, simply copy text from the shortage sheet as shown in the picture, 
+				past it into input field at the top left on this page and press Generate button.
+				</p>
+				<img src="pics/howTo.png" height="260" width="560" title="Generating Shortage Sheet" alt="Generating shoortage sheet" class="picBorder">
+		</section>
+		<section class="noDisplay grid-item grid-item-howToStep2" id="grid8">
+				<p><h4 class="redText">IMPORTANT!</h4> 
+				<p class="textIndent text-align-left">In order for this to work correctly a text pasted from shortage sheet should look like this: </p>
+				<pre>M9001
+ Carrot Dice 10x10x20 Unriddled
+ KG
+ 2700.000</pre>
+			
+		</section>
+		
+		<section class="noDisplay grid-item grid-item-howToStep3" id="grid9">
+			<p class="textIndent text-align-left"> The first M or P code must be at the top left corner. If there are multiple items, they must  be seperated by an empty line like this:</p>
+				<pre>M9001
+ Carrot Dice 10x10x20 Unriddled
+ KG
+ 2700.000
+   
+M9042
+ Carrot Batton Riddles
+ KG
+ 1500
+   
+M9340
+ Potato Skin Off 10mm Dcd Raw
+ KG
+ 300.000
+</pre>
+		</section>
+		
+		<section class="noDisplay grid-item grid-item-howToUpdateDeliveriesTitle" id="grid10">
+			<h2>How to update deliveries</h2>
+		</section>
+		<section class="noDisplay grid-item grid-item-deliveriesStep1" id="grid11">
+			<p class="textIndent text-align-left">First open 'Expected Receipt Inquiry" on Protean. Then Select 'GI STORES', after that go to 'Dates' section
+				and select current date for 'Expected from' field.</p>
+			<img src="pics/selectDate2.png" height="330" width="350" title="Updating deliveries" alt="Updating deliveries" class="picBorder">
+				
+		</section>  
+		<section class="noDisplay grid-item grid-item-deliveriesStep2" id="grid12">
+			<p class="textIndent text-align-left">Then go to 'Receipt' section and select 'Open' delivery status and press search.</p>
+			<img src="pics/selectOpen2.png" height="370" width="363" title="Updating deliveries" alt="Updating deliveries" class="picBorder">
+		
+		</section>
+		<section class="noDisplay grid-item grid-item-deliveriesStep3" id="grid13">
+			<p class="textIndent">Once the search result appear, they need to be copied. This can be done by pressing the right mouse button on results.
+				Then from a menu select 'Copy Table to Clipboard'. Paste this table into the deliveries field on this page and press 'Update' button. 
+			</p>
+			<img src="pics/selectCopy.png" height="350" width="640" title="Updating deliveries" alt="Updating deliveries" class="picBorder">
+		</section>
+		<footer class="grid-item grid-item-footer">Created by Andrius Pocius</footer> 	
+	</main>
+</body>
+</html>
