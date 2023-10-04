@@ -67,8 +67,8 @@ for ($i = 0; $i< count($productCodes); $i++ ) {
 					while ($row2 = mysqli_fetch_array($queryResult, MYSQLI_ASSOC))
 					{
 						
-						$expectedQuantity = $row2['SUM(Expected_Receipt_Qty)'];
-						$resourceDescription = $row2['Resource_Description'];
+						$expectedQuantity = html_entity_decode($row2['SUM(Expected_Receipt_Qty)']);
+						$resourceDescription = html_entity_decode($row2['Resource_Description']);
 					} 
 					
 					

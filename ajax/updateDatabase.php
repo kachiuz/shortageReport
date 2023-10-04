@@ -65,6 +65,15 @@ $resultDelete = mysqli_query($shortageReportDB, $queryDelete);
 
 for ($i = 0; $i <$arrayLength; $i++){
 	
+	//sql injection prevention
+	
+	$documentArray[$i] = htmlentities(mysqli_real_escape_string($shortageReportDB, $documentArray[$i]));
+	$supplierArray[$i] = htmlentities(mysqli_real_escape_string($shortageReportDB, $supplierArray[$i]));
+	$resourceArray[$i] = htmlentities(mysqli_real_escape_string($shortageReportDB, $resourceArray[$i]));
+	$descriptionArray[$i] = htmlentities(mysqli_real_escape_string($shortageReportDB, $descriptionArray[$i]));
+	$quantityArray2[$i] = htmlentities(mysqli_real_escape_string($shortageReportDB, $quantityArray2[$i]));
+	
+	
 	//a date needs to be sorted as now it is submitted in a format like this ---> 11\/29\/22 and it does't get inserted into db
 	$splitDateArray = explode("/", $dateArray[$i]);
 	//compose proper date
