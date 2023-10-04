@@ -502,8 +502,8 @@ const addNameToShortageTable = () => {
 	if (nameValue !== "") {
 		let shortageTable = document.getElementById("shortageTable");
 		//if the name is the first table row in the table, I must remove the empty tablew row first;
-		
-		if (isTableEmpty === true){
+		let combine = document.getElementById("combineTables").checked;
+		if (isTableEmpty === true || combine === false ){
 			shortageTable.innerHTML = "";
 		}
 		
@@ -518,7 +518,9 @@ const addNameToShortageTable = () => {
 		
 		//then instert empty table row back into table.
 		shortageTable.appendChild(tableRow);
+		isTableEmpty = false;
 	}
+	console.log(isTableEmpty);
 }
 const enableInput = () => {
 	let value = document.getElementById("orderName").value;
