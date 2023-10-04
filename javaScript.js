@@ -520,7 +520,6 @@ const addNameToShortageTable = () => {
 		shortageTable.appendChild(tableRow);
 		isTableEmpty = false;
 	}
-	console.log(isTableEmpty);
 }
 const enableInput = () => {
 	let value = document.getElementById("orderName").value;
@@ -633,7 +632,7 @@ const showMainPage = () => {
 
 	//there are 13 grid element. 0 is for login and 1-13 are for main page.
 	//will add/remove clas noDisplay with a loop.
-	for(let i=1; i<15;i++) {
+	for(let i=1; i<16;i++) {
 		document.getElementById("grid"+i).classList.remove("noDisplay");
 	
 	}
@@ -648,7 +647,7 @@ const showLoginPage = () => {
 	let signOut = document.getElementById("signOut").classList.add("noDisplay");
 	//add nodisplay to grid elements
 	let gridElement;
-	for(let i=1; i<15;i++) {
+	for(let i=1; i<16;i++) {
 		gridElement = document.getElementById("grid"+i).classList.add("noDisplay");
 	}
 	
