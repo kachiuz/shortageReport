@@ -6,15 +6,21 @@ let quantityArray = [];
 //in case there are no deliveries for product, I need to have it's description
 let descriptionArrayQuery = [];
 
-
+//I need this variable to determne if there has been any values added to table.
+//I use it to clear the empty row if a location/order name need to be added as the first table row to the table
+let isTableEmpty = true;
 //number of table columns
 let tableColNumber = 6;
 const generateTable =(expectedDatesArray, coverOrNotArray, expectedQuantitiesArray, resourceDescriptionArray) => {
 	
 	//pick up table body element into which we will insert tablerows with table data
 	let shortageTable = document.getElementById("shortageTable");
-	//clear inner html first;
-	shortageTable.innerHTML = "";
+
+	//check if the shortages must be deleted or combined 
+	let combine = document.getElementById("combineTables").checked;
+	if (combine === false || isTableEmpty === true) {
+		shortageTable.innerHTML = "";
+	}
 	//declare td and tr variables, that will be used for td and tr element creation inside the for loop
 	let tableRow;
 	let tableData;
@@ -82,6 +88,8 @@ const generateTable =(expectedDatesArray, coverOrNotArray, expectedQuantitiesArr
 		shortageTable.appendChild(tableRow);
 	
 	}
+	//as shortage table has been updated, must change this value;
+	isTableEmpty = false;
 		
 }
 
@@ -382,6 +390,7 @@ const clearTable = () =>{
 	let shortageTable = document.getElementById("shortageTable");
 	//first clear the table
 	shortageTable.innerHTML = "";
+	isTableEmpty = true;
 	//then create an empty table row
 	let tableRow = document.createElement("tr");
 	 
@@ -404,6 +413,7 @@ const clearTable = () =>{
 	
 	//then instert empty table row back into table.
 	shortageTable.appendChild(tableRow);
+	//as table has been clears, this value must be updated.
  }
  
 const clearDeliveriesField = () =>{
@@ -465,13 +475,66 @@ const fetchLastUpdate = () => {
 	}
 	
 }
+
+const addNameToShortageTable = () => {
+	
+	//first select value from the dropdown menu
+	let nameValue = document.getElementById("orderName").value;
+	
+	//if custom name is selected, then use the name value from text input field.
+	if (nameValue === "Customed") {
+		nameValue = document.getElementById("customName").value;
+		
+		//if empty string report error
+		let textInput = document.getElementById("customName");
+		if (nameValue === "") {
+			//add alert message
+			alert("Please provide a name for order/location!");
+			//add error border;
+			textInput.setAttribute("class", "errorBorder");
+		} else {
+			//remove error border
+			textInput.removeAttribute("class", "errorBorder");
+		}
+	}
+	
+	//to prevent inserting empty row, name will be added to table only if it has a value
+	if (nameValue !== "") {
+		let shortageTable = document.getElementById("shortageTable");
+		//if the name is the first table row in the table, I must remove the empty tablew row first;
+		
+		if (isTableEmpty === true){
+			shortageTable.innerHTML = "";
+		}
+		
+		//create an empty table row
+		let tableRow = document.createElement("tr");
+		 
+		//then create empty td element with empty space
+		let tableData1 = document.createElement("td");
+		tableData1.setAttribute("colspan", "6");
+		tableData1.innerHTML = nameValue;
+		tableRow.appendChild(tableData1);
+		
+		//then instert empty table row back into table.
+		shortageTable.appendChild(tableRow);
+	}
+}
+const enableInput = () => {
+	let value = document.getElementById("orderName").value;
+	let textInput = document.getElementById("customName");
+	if (value === "Customed") {
+		//remove disabled attribute
+		textInput.disabled = false;
+	} else {
+		//add disabled attribue
+		textInput.disabled = true;
+	}
+}
  const init2 = ()=> {
-	 
 	 
 	let generateButton = document.getElementById("generateButton");
 	generateButton.onclick = getValue;
-
-	// document.getElementById('upload').addEventListener('change', handleFileSelect, false);
 	 
 	let updateButton = document.getElementById("updateButton");
 	updateButton.onclick = getUpdateInput;
@@ -489,6 +552,12 @@ const fetchLastUpdate = () => {
 	let clearDeliveriesButton = document.getElementById("clearDeliveriesButton");
 	clearDeliveriesButton.onclick = clearDeliveriesField;
 	
+	let addNameButton = document.getElementById("addNameButton");
+	addNameButton.onclick = addNameToShortageTable;
+	
+	let orderName = document.getElementById("orderName");
+	orderName.addEventListener("change", enableInput);
+
 	
 	//add function to signOut button
 	document.getElementById("signOut").onclick = signOut;
@@ -562,7 +631,7 @@ const showMainPage = () => {
 
 	//there are 13 grid element. 0 is for login and 1-13 are for main page.
 	//will add/remove clas noDisplay with a loop.
-	for(let i=1; i<14;i++) {
+	for(let i=1; i<15;i++) {
 		document.getElementById("grid"+i).classList.remove("noDisplay");
 	
 	}
@@ -577,7 +646,7 @@ const showLoginPage = () => {
 	let signOut = document.getElementById("signOut").classList.add("noDisplay");
 	//add nodisplay to grid elements
 	let gridElement;
-	for(let i=1; i<14;i++) {
+	for(let i=1; i<15;i++) {
 		gridElement = document.getElementById("grid"+i).classList.add("noDisplay");
 	}
 	

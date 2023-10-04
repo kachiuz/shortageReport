@@ -58,6 +58,16 @@ button {
 	top: 2px;
 	/*margin-right: 10%;*/
 }
+#addNameButton, select, #customName, #combineTables {
+	padding: 10px;
+	font-size: 20px;
+}
+.marginRight{
+	margin-right: 50px;
+}
+.marginRight2{
+	margin-right: 10px;
+}
 
 .clearButton {
 	background-color: #ffd1b3;
@@ -153,6 +163,14 @@ button:focus {
 }
 .grid-item-generateTable {
 	grid-column: 4 / 13;	
+}
+
+/*deliveries update grid*/
+.grid-item-combineTables{
+	grid-column: 1 / 13;
+	border-top: 1px solid grey;
+	/*border-bottom: 1px solid grey;
+	background-color: #e6ffe6;*/
 }
 
 /*deliveries update grid*/
@@ -284,10 +302,15 @@ td {
 	margin: auto;
 	border: 1px solid grey;
 }
-#rememberMe{
+#rememberMe, #combineTables{
 	padding: 25px;
 	font-size: 30px;
 	transform: scale(1.5);
+}
+/*color background for order/location name*/
+td[colspan="6"] {
+  background-color: #e6e6e6;
+  font-weight: 600;
 }
 
 /*table widths*/

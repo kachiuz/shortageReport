@@ -81,6 +81,27 @@
 			</section>
 		</section>
 		
+		<section class="noDisplay grid-item grid-item-combineTables" id="grid14">
+			<input type="checkbox" id="combineTables" name="combineTables">
+			<label for="combineTables" class="marginRight"> Combine Shortages</label>
+			
+			<label for="orderName">Select name</label>
+			<select name="orderName" id="orderName" class="marginRight2">
+			  <option value="Wave 1">Wave 1</option>
+			  <option value="Wave 2">Wave 2</option>
+			  <option value="Wave 3">Wave 3</option>
+			  <option value="Veg Prep">Veg Prep</option>
+			  <option value="Cook House">Cook House</option>
+			  <option value="Box Shed">Box Shed</option>
+			  <option value="Customed">Customed</option>
+			</select>
+			
+			<label for="customName">Custom name:</label>
+			<input type="text" id="customName" name="customName" disabled placeholder="Select custom" maxlength="30" class="marginRight2">
+			
+			<button type="button" id="addNameButton" class="greenButton" title="Insert order name to shortage report table">Insert Name</button>
+		</section>
+		
 		<section class="noDisplay grid-item grid-item-updateDeliveriesTitle" id="grid3">
 			<h1>Update deliveries</h1>
 		</section>
@@ -90,9 +111,7 @@
 					<span id="lastUpdate" class="greenText">...loading...</span>
 				</div>
 				<form enctype="multipart/form-data" class="topBottom5px">
-				<!--spans because i need inline element-->
-					<!--<label for="password">Password</label>
-					<input type="password" id="password" name="password" size="25" placeholder="Password">-->
+
 					<span id="response"></span>
 					<span class="positionRight2">
 						<button id="clearDeliveriesButton" type="button" class="clearButton" title="Empty the deliveries field">Clear Form</button>
